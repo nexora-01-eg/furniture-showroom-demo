@@ -12,6 +12,49 @@ const fmt = n => 'EGP ' + n.toLocaleString('en-US');
 const byId = id => PRODUCTS.find(p => p.id === id);
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 
+/* ---------------- photo pack: deterministic random placement ----------------
+   40 generated campaign photos in img/pack/. Slots are mapped by stable hash
+   of the item id (same product = same photo everywhere: card, PDP, cart...).
+   Every <img> sits ON TOP of its SVG scene and removes itself on load error,
+   so the SVG is always the fallback. */
+const PACK = [
+  '01_graphic_arch_motif_hero.jpg','01_showroom_golden_hour.jpg',
+  '02_beige_linen_sofa.jpg','02_graphic_material_grid.jpg',
+  '03_graphic_arch_shadow.jpg','03_sage_modular_sectional.jpg',
+  '04_channel_tufted_bed.jpg','04_graphic_furniture_blueprint.jpg',
+  '05_graphic_light_ribbons.jpg','05_walnut_wardrobe.jpg',
+  '06_graphic_sage_portal.jpg','06_oak_dining_table.jpg',
+  '07_caramel_lounge_chair.jpg','07_graphic_walnut_topography.jpg',
+  '08_executive_desk.jpg','08_graphic_cream_sculpture.jpg',
+  '09_graphic_modular_blocks.jpg','09_living_room_lifestyle.jpg',
+  '10_bedroom_lifestyle.jpg','10_graphic_sunlit_arch_window.jpg',
+  '11_dining_room_lifestyle.jpg','11_sequence_studio_doorway.jpg',
+  '12_home_office_lifestyle.jpg','12_sequence_material_selection.jpg',
+  '13_evening_showroom.jpg','13_sequence_wood_marking.jpg',
+  '14_cream_linen_texture.jpg','14_sequence_cutting_oak.jpg',
+  '15_oak_wood_grain.jpg','15_sequence_sanding_edge.jpg',
+  '16_caramel_leather_seam.jpg','16_sequence_assembly.jpg',
+  '17_material_samples_flat_lay.jpg','17_sequence_upholstery.jpg',
+  '18_sequence_oiling_wood.jpg','18_window_plant_shadow.jpg',
+  '19_sequence_styled_piece.jpg','19_showroom_through_glass_night.jpg',
+  '20_craftsman_hands_oak_edge.jpg','20_sequence_final_reveal.jpg'
+];
+const h32 = s => { let h = 2166136261; for (let i = 0; i < s.length; i++){ h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; };
+const PH = (slot, cls = 'ph') => PACK.length
+  ? `<img class="${cls}" src="img/pack/${PACK[((slot % PACK.length) + PACK.length) % PACK.length]}" alt="" loading="lazy" onerror="this.remove()">` : '';
+const P_MAIN = id => h32(id) % PACK.length;
+const P_ALT  = id => (P_MAIN(id) + 17) % PACK.length;
+const P_TH   = (id, k) => (P_MAIN(id) + (k + 1) * 7) % PACK.length;
+/* curated key slots (filenames match the generation briefs) */
+const IMG = {
+  hero:'01_showroom_golden_hour.jpg',
+  idea:['13_evening_showroom.jpg','09_graphic_modular_blocks.jpg','19_showroom_through_glass_night.jpg'],
+  story:{ material:'14_cream_linen_texture.jpg', detail:'16_caramel_leather_seam.jpg', craft:'20_craftsman_hands_oak_edge.jpg', comfort:'09_living_room_lifestyle.jpg' },
+  conv:'18_window_plant_shadow.jpg', final:'20_sequence_final_reveal.jpg',
+  pz:'17_material_samples_flat_lay.jpg'
+};
+const PHF = (file, cls = 'ph') => `<img class="${cls}" src="img/pack/${file}" alt="" loading="lazy" onerror="this.remove()">`;
+
 /* ---------------- theme (dark / light) ---------------- */
 const themeBtn = $('#themeBtn');
 function applyTheme(t){
@@ -132,7 +175,7 @@ const catMap = { sofa:'sofa', bed:'bed', dining:'dining', desk:'desk', table:'co
 function renderCatGrid(){
   $('#catGrid').innerHTML = CATEGORIES.map((c, i) => `
     <button class="cat-card rv" data-key="${c.key}" style="transition-delay:${i * 60}ms">
-      <span class="cat-media">${VIS.scene({ type:catMap[c.type] || 'sofa', color:['beige','brown','grey','charcoal','green'][i % 5], alt:T(c.name.ar, c.name.en) })}</span>
+      <span class="cat-media">${PH(h32(c.key))}${VIS.scene({ type:catMap[c.type] || 'sofa', color:['beige','brown','grey','charcoal','green'][i % 5], alt:T(c.name.ar, c.name.en) })}</span>
       <span class="cat-shade"></span>
       <span class="cat-go">←</span>
       <span class="cat-txt"><b>${T(c.name.ar, c.name.en)}</b><span>${T(c.tag.ar, c.tag.en)}</span></span>
@@ -145,8 +188,8 @@ function cardHTML(p, i = 0){
   return `
   <article class="p-card rv" data-id="${p.id}" style="transition-delay:${(i % 4) * 50}ms">
     <div class="p-media">
-      <span class="scene main">${VIS.productScene(p, 0)}</span>
-      <span class="scene alt">${VIS.productScene(p, 1)}</span>
+      <span class="scene main">${PH(P_MAIN(p.id))}${VIS.productScene(p, 0)}</span>
+      <span class="scene alt">${PH(P_ALT(p.id))}${VIS.productScene(p, 1)}</span>
       <span class="p-badge ${made ? 'made' : ''}">${lbl('avail', p.avail)}</span>
       <div class="p-actions">
         <button data-quick="${p.id}">${T('عرض سريع', 'Quick view')}</button>
@@ -326,15 +369,15 @@ function renderPDP(){
   $('#pdpSwatches').innerHTML = p.colors
     .map(c => `<button class="sw ${c === pdp.color ? 'on' : ''}" data-c="${c}" aria-label="${lbl('color', c)}"></button>`).join('');
   $('#pdpThumbs').innerHTML = [0,1,2]
-    .map(v => `<button class="pdp-thumb ${v === pdp.variant ? 'on' : ''}" data-v="${v}" aria-label="View ${v + 1}">${VIS.productScene({ ...p, color:pdp.color }, v)}</button>`).join('');
-  $('#pdpMain').innerHTML = VIS.productScene({ ...p, color:pdp.color }, pdp.variant);
+    .map(v => `<button class="pdp-thumb ${v === pdp.variant ? 'on' : ''}" data-v="${v}" aria-label="View ${v + 1}">${PH(P_TH(p.id, v))}${VIS.productScene({ ...p, color:pdp.color }, v)}</button>`).join('');
+  $('#pdpMain').innerHTML = PH(P_MAIN(p.id)) + VIS.productScene({ ...p, color:pdp.color }, pdp.variant);
   $('#pdpWa').href = 'https://wa.me/201000000000?text=' + encodeURIComponent(
     T(`مرحبا إمكان (استفسار تجريبي) — مهتم بـ "${p.name}" (${fmt(p.price)}).`,
       `Hello EMKAN (demo inquiry) — I'm interested in "${p.name}" (${fmt(p.price)}).`));
 }
 function refreshPDPImage(){
   const p = pdp.product;
-  $('#pdpMain').innerHTML = VIS.productScene({ ...p, color:pdp.color }, pdp.variant);
+  $('#pdpMain').innerHTML = PH(P_MAIN(p.id)) + VIS.productScene({ ...p, color:pdp.color }, pdp.variant);
   $('#pdpColorName').textContent = '— ' + lbl('color', pdp.color);
   $('#pdpSwatches').querySelectorAll('.sw').forEach(s => s.classList.toggle('on', s.dataset.c === pdp.color));
   $('#pdpThumbs').querySelectorAll('.pdp-thumb').forEach(t => t.classList.toggle('on', +t.dataset.v === pdp.variant));
@@ -382,7 +425,7 @@ function renderCart(){
     const p = byId(l.id);
     return `
     <div class="cart-item" data-id="${l.id}">
-      <div class="ci-img">${VIS.productScene(p, 0)}</div>
+      <div class="ci-img">${PH(P_MAIN(p.id))}${VIS.productScene(p, 0)}</div>
       <div>
         <div class="ci-name">${p.name}</div>
         <div class="ci-meta">${lbl('category', p.category)} · ${lbl('avail', p.avail)}</div>
@@ -432,7 +475,7 @@ function renderSearch(q){
   $('#searchResults').innerHTML = list.length
     ? list.map(p => `
       <button class="sr-item" data-quick="${p.id}">
-        <span class="sr-thumb">${VIS.productScene(p, 0)}</span>
+        <span class="sr-thumb">${PH(P_MAIN(p.id))}${VIS.productScene(p, 0)}</span>
         <span><span class="sr-name">${p.name}</span><br><span class="sr-cat">${lbl('category', p.category)} · ${lbl('room', p.room)}</span></span>
         <span class="sr-price">${fmt(p.price)}</span>
       </button>`).join('')
@@ -453,7 +496,7 @@ const ideaFrames = [0, 1, 2].map(i => {
   const d = document.createElement('div');
   d.className = 'idea-frame' + (i === 0 ? ' on' : '');
   d.dataset.f = i;
-  d.innerHTML = VIS.ideaFrame(i);
+  d.innerHTML = PHF(IMG.idea[i], 'idea-photo') + VIS.ideaFrame(i);
   $('#ideaVisual').appendChild(d);
   return d;
 });
@@ -483,7 +526,7 @@ window.addEventListener('resize', ideaTick);
 /* ---------------- product story ---------------- */
 const storyKinds = ['material', 'detail', 'craft', 'comfort'];
 $('#storyVisual').innerHTML = storyKinds
-  .map((k, i) => `<div class="story-frame ${i === 0 ? 'on' : ''}" data-f="${i}">${VIS.storyFrame(k)}${k === 'detail' ? '<img class="frame-photo" src="img/atmos/leather-stitch.jpg" alt="" onerror="this.remove()">' : ''}</div>`).join('');
+  .map((k, i) => `<div class="story-frame ${i === 0 ? 'on' : ''}" data-f="${i}">${PHF(IMG.story[k], 'frame-photo')}${VIS.storyFrame(k)}</div>`).join('');
 
 const stepIO = new IntersectionObserver(es => {
   es.forEach(e => {
@@ -525,7 +568,7 @@ $$('.story-step')[0].classList.add('on');
 
 /* ---------------- personalization mini products ---------------- */
 $('#pzProd').innerHTML = PRODUCTS.filter(p => p.feature).slice(0, 3)
-  .map(p => `<span class="pzp">${VIS.productScene(p, 0)}</span>`).join('');
+  .map(p => `<span class="pzp">${PH(P_MAIN(p.id))}${VIS.productScene(p, 0)}</span>`).join('');
 
 /* ---------------- DEMO MODE ---------------- */
 const demoFab = $('#demoFab'), demoPanel = $('#demoPanel');
@@ -645,6 +688,10 @@ document.addEventListener('keydown', e => {
 
 /* ---------------- boot ---------------- */
 I18N.init();
+/* NOTE: url() inside a custom property resolves against the STYLESHEET that
+   consumes it (styles.css lives in css/), so the path is written css-relative. */
+$('#conversion').style.setProperty('--cvbg', `url("../img/pack/${IMG.conv}")`);
+$('#final').style.setProperty('--cvbg', `url("../img/pack/${IMG.final}")`);
 renderDynamic();
 observeReveals();
 ideaTick();
