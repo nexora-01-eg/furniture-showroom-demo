@@ -418,9 +418,187 @@ const VIS = (() => {
     </svg>`;
   }
 
-  /* ---------------- product story frames ---------------- */
+    /* ---------------- idea section frames (scroll story) ---------------- */
+    function ideaFrame(step){
+      const u = ++uid;
+      const wallBg = '#EDE7DC', night = '#1B1D22', night2 = '#242830';
+
+      if (step === 0){ /* physical showroom storefront */
+        return `
+      <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Physical showroom">
+        <defs>
+          <linearGradient id="is${u}" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#F1EBDF"/><stop offset="1" stop-color="#DCD2C0"/>
+          </linearGradient>
+          <linearGradient id="ig${u}" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#CFE0E4"/><stop offset=".5" stop-color="#EAF1F2"/><stop offset="1" stop-color="#BFD2D8"/>
+          </linearGradient>
+          <radialGradient id="il${u}" cx=".3" cy=".1" r=".9">
+            <stop offset="0" stop-color="#FFFDF5" stop-opacity=".7"/><stop offset="1" stop-color="#FFFDF5" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="800" height="600" fill="url(#is${u})"/>
+        <rect y="470" width="800" height="130" fill="#CDBFA8"/>
+        <rect y="470" width="800" height="8" fill="#B7A78D"/>
+        <g>
+          <rect x="96" y="96" width="608" height="330" rx="10" fill="#FBF8F1" stroke="#C9B79B" stroke-width="4"/>
+          <rect x="96" y="96" width="608" height="74" rx="10" fill="#1F1E1B"/>
+          <rect x="96" y="158" width="608" height="12" fill="#1F1E1B"/>
+          <text x="400" y="145" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" font-weight="800" letter-spacing="16" fill="#D8C7AE">EMKAN</text>
+          <rect x="126" y="196" width="330" height="204" rx="6" fill="url(#ig${u})" stroke="#8B7A5E" stroke-width="4"/>
+          <rect x="482" y="196" width="192" height="204" rx="6" fill="url(#ig${u})" stroke="#8B7A5E" stroke-width="4"/>
+          <path d="M470 196v204" stroke="#8B7A5E" stroke-width="4"/>
+          <g opacity=".85">
+            <rect x="150" y="322" width="164" height="46" rx="12" fill="#D8C7AE"/>
+            <rect x="158" y="304" width="44" height="30" rx="9" fill="#B9A488"/>
+            <rect x="212" y="304" width="44" height="30" rx="9" fill="#B9A488"/>
+            <rect x="330" y="318" width="104" height="50" rx="8" fill="#7E6047"/>
+            <rect x="344" y="300" width="76" height="26" rx="6" fill="#9C7E60"/>
+            <rect x="512" y="326" width="132" height="42" rx="8" fill="#A5A19A"/>
+            <rect x="528" y="300" width="60" height="34" rx="7" fill="#C4C0B8"/>
+          </g>
+          <circle cx="646" cy="298" r="9" fill="#1F1E1B"/>
+          <rect x="140" y="216" width="70" height="24" rx="12" fill="#1F1E1B" opacity=".82"/>
+          <text x="152" y="233" font-family="Inter, sans-serif" font-size="13" font-weight="600" letter-spacing="2" fill="#F5F1E9">OPEN</text>
+        </g>
+        <ellipse cx="400" cy="512" rx="330" ry="26" fill="#1F1E1B" opacity=".08"/>
+        <rect width="800" height="600" fill="url(#il${u})"/>
+      </svg>`;
+      }
+
+      if (step === 1){ /* digital showroom — product grid on a screen */
+        let cards = '';
+        const cols = ['#D8C7AE','#A5A19A','#7E6047','#6F7B62','#C4C0B8','#9C7E60'];
+        for (let i = 0; i < 6; i++){
+          const x = 96 + (i % 3) * 210, y = 176 + Math.floor(i / 3) * 158;
+          cards += `
+            <rect x="${x}" y="${y}" width="190" height="138" rx="12" fill="#FFFDF9" stroke="#D8CFBE" stroke-width="2"/>
+            <rect x="${x + 10}" y="${y + 10}" width="170" height="78" rx="8" fill="${cols[i]}" opacity=".38"/>
+            <rect x="${x + 14}" y="${y + 96}" width="104" height="10" rx="5" fill="#4C4B47" opacity=".75"/>
+            <rect x="${x + 14}" y="${y + 112}" width="62" height="9" rx="4" fill="#A98B5D" opacity=".8"/>
+            <rect x="${x + 132}" y="${y + 106}" width="44" height="20" rx="10" fill="#1F1E1B"/>
+            <text x="${x + 140}" y="${y + 120}" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#F5F1E9">EGP</text>`;
+        }
+        return `
+      <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Digital showroom">
+        <defs>
+          <linearGradient id="db${u}" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#20222A"/><stop offset="1" stop-color="#121317"/>
+          </linearGradient>
+          <radialGradient id="dh${u}" cx=".5" cy="0" r="1">
+            <stop offset="0" stop-color="#C9B79B" stop-opacity=".28"/><stop offset="1" stop-color="#C9B79B" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="800" height="600" fill="url(#db${u})"/>
+        <rect width="800" height="600" fill="url(#dh${u})"/>
+        <rect x="60" y="70" width="680" height="470" rx="18" fill="#17181D" stroke="#3A3D46" stroke-width="3"/>
+        <rect x="60" y="70" width="680" height="54" rx="18" fill="#1E2027"/>
+        <rect x="60" y="106" width="680" height="18" fill="#1E2027"/>
+        <circle cx="94" cy="97" r="7" fill="#E0705C"/><circle cx="118" cy="97" r="7" fill="#E0B45C"/><circle cx="142" cy="97" r="7" fill="#6FBF73"/>
+        <rect x="180" y="86" width="420" height="22" rx="11" fill="#262932"/>
+        <text x="200" y="102" font-family="Inter, sans-serif" font-size="12" fill="#8B93A3">emkan-furniture.com</text>
+        <text x="100" y="168" font-family="Inter, sans-serif" font-size="20" font-weight="800" letter-spacing="6" fill="#F5F1E9">EMKAN</text>
+        <rect x="560" y="150" width="150" height="30" rx="15" fill="#C9B79B"/>
+        <text x="582" y="170" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#1F1E1B">24/7 SHOP</text>
+        ${cards}
+        <rect x="60" y="500" width="680" height="40" rx="14" fill="#1E2027"/>
+        <rect x="84" y="512" width="180" height="16" rx="8" fill="#3A3D46"/>
+        <rect x="284" y="512" width="120" height="16" rx="8" fill="#3A3D46"/>
+        <rect x="424" y="512" width="90" height="16" rx="8" fill="#C9B79B" opacity=".8"/>
+        <rect x="620" y="508" width="100" height="24" rx="12" fill="#C9B79B"/>
+        <text x="640" y="524" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#1F1E1B">CHECKOUT</text>
+      </svg>`;
+      }
+
+      /* step 2 — 24/7 access */
+      return `
+      <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Always open">
+        <defs>
+          <linearGradient id="nb${u}" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="${night}"/><stop offset="1" stop-color="${night2}"/>
+          </linearGradient>
+          <radialGradient id="moon${u}" cx=".5" cy=".5" r=".5">
+            <stop offset=".6" stop-color="#F5F1E9" stop-opacity=".95"/><stop offset="1" stop-color="#F5F1E9" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="800" height="600" fill="url(#nb${u})"/>
+        <g fill="#F5F1E9" opacity=".7">
+          <circle cx="120" cy="80" r="2.4"/><circle cx="210" cy="140" r="1.6"/><circle cx="660" cy="70" r="2.2"/>
+          <circle cx="720" cy="150" r="1.5"/><circle cx="540" cy="52" r="1.8"/><circle cx="60" cy="190" r="1.6"/>
+        </g>
+        <circle cx="668" cy="112" r="46" fill="url(#moon${u})"/>
+        <circle cx="668" cy="112" r="30" fill="#F5F1E9"/>
+        <circle cx="654" cy="104" r="7" fill="#DCD5C6" opacity=".7"/><circle cx="676" cy="124" r="5" fill="#DCD5C6" opacity=".6"/>
+        <rect y="466" width="800" height="134" fill="#101216"/>
+        <rect y="466" width="800" height="7" fill="#2A2E36"/>
+        <g>
+          <rect x="120" y="180" width="420" height="290" rx="10" fill="#1E2128" stroke="#3A3F4A" stroke-width="3"/>
+          <rect x="120" y="180" width="420" height="58" rx="10" fill="#14161B"/>
+          <rect x="120" y="228" width="420" height="10" fill="#14161B"/>
+          <text x="330" y="222" text-anchor="middle" font-family="Inter, sans-serif" font-size="30" font-weight="800" letter-spacing="12" fill="#C9B79B">EMKAN</text>
+          <rect x="150" y="262" width="176" height="176" rx="6" fill="#262A32" stroke="#4A5060" stroke-width="3"/>
+          <rect x="346" y="262" width="164" height="80" rx="6" fill="#262A32" stroke="#4A5060" stroke-width="3"/>
+          <rect x="346" y="358" width="164" height="80" rx="6" fill="#262A32" stroke="#4A5060" stroke-width="3"/>
+          <g opacity=".9">
+            <rect x="172" y="366" width="132" height="42" rx="10" fill="#D8C7AE"/>
+            <rect x="180" y="346" width="38" height="30" rx="9" fill="#B9A488"/>
+            <rect x="366" y="286" width="124" height="34" rx="8" fill="#7E6047"/>
+            <rect x="366" y="382" width="124" height="34" rx="8" fill="#A5A19A"/>
+          </g>
+          <circle cx="500" cy="304" r="7" fill="#C9B79B"/>
+          <rect x="164" y="278" width="76" height="24" rx="12" fill="#C9B79B"/>
+          <text x="176" y="295" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#1F1E1B">24/7</text>
+        </g>
+        <g>
+          <rect x="596" y="250" width="128" height="230" rx="18" fill="#0C0D10" stroke="#4A5060" stroke-width="3"/>
+          <rect x="606" y="272" width="108" height="176" rx="8" fill="#F1ECE2"/>
+          <rect x="618" y="286" width="84" height="12" rx="6" fill="#1F1E1B"/>
+          <rect x="618" y="308" width="84" height="52" rx="8" fill="#D8C7AE"/>
+          <rect x="618" y="368" width="84" height="12" rx="6" fill="#4C4B47"/>
+          <rect x="618" y="388" width="52" height="12" rx="6" fill="#A98B5D"/>
+          <rect x="618" y="412" width="84" height="24" rx="12" fill="#1F1E1B"/>
+          <text x="634" y="428" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#F5F1E9">ORDER</text>
+          <rect x="638" y="462" width="44" height="6" rx="3" fill="#4A5060"/>
+        </g>
+        <g font-family="Inter, sans-serif" font-weight="700">
+          <rect x="120" y="504" width="188" height="52" rx="26" fill="#C9B79B"/>
+          <text x="150" y="537" font-size="24" fill="#1F1E1B">OPEN 24/7</text>
+        </g>
+      </svg>`;
+    }
+
+    /* ---------------- product story frames ---------------- */
   function storyFrame(kind){
     const u = ++uid;
+    if (kind === 'detail') return `
+      <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Stitch detail">
+        <defs>
+          <linearGradient id="dt${u}" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8A6B4F"/><stop offset="1" stop-color="#5E4736"/>
+          </linearGradient>
+          <pattern id="dtw${u}" width="16" height="16" patternUnits="userSpaceOnUse">
+            <path d="M0 4h16M0 12h16" stroke="#4A3B2E" stroke-width="1.4" opacity=".3"/>
+            <path d="M4 0v16M12 0v16" stroke="#4A3B2E" stroke-width="1.4" opacity=".22"/>
+          </pattern>
+          <radialGradient id="dtl${u}" cx=".3" cy=".12" r=".95">
+            <stop offset="0" stop-color="#FFFDF5" stop-opacity=".6"/><stop offset="1" stop-color="#FFFDF5" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="800" height="600" fill="#E7E0D2"/>
+        <g transform="rotate(-6 400 300)">
+          <rect x="-60" y="90" width="940" height="330" rx="40" fill="url(#dt${u})"/>
+          <rect x="-60" y="90" width="940" height="330" rx="40" fill="url(#dtw${u})"/>
+          <rect x="-60" y="330" width="940" height="90" rx="34" fill="#4A3B2E" opacity=".55"/>
+          <path d="M40 200h740" stroke="#EDE5D6" stroke-width="7" stroke-dasharray="26 18" stroke-linecap="round"/>
+          <path d="M40 236h740" stroke="#2F2721" stroke-width="3.4" stroke-dasharray="8 14" opacity=".65"/>
+          <circle cx="400" cy="218" r="120" fill="none" stroke="#F5F1E9" stroke-width="5" opacity=".92"/>
+          <path d="M400 98v-46M400 338v46M280 218h-46M520 218h46" stroke="#F5F1E9" stroke-width="5" stroke-linecap="round" opacity=".92"/>
+          <rect x="330" y="440" width="220" height="60" rx="14" fill="#1F1E1B" opacity=".82"/>
+          <text x="356" y="478" font-family="Inter, sans-serif" font-size="25" font-weight="700" fill="#F5F1E9" letter-spacing="4">STITCH 6/mm</text>
+        </g>
+        <rect width="800" height="600" fill="url(#dtl${u})"/>
+      </svg>`;
+
     if (kind === 'material') return `
       <svg viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Fabric close-up">
         <defs>
@@ -556,5 +734,5 @@ const VIS = (() => {
     return scene({ type: product.scene, color: product.color, variant, cls, alt: product.name });
   }
 
-  return { scene, heroScene, storyFrame, productScene };
+  return { scene, heroScene, storyFrame, productScene, ideaFrame };
 })();

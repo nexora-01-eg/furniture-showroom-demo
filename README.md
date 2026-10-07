@@ -1,12 +1,15 @@
-# EMKAN Furniture — Digital Showroom Concept
+# EMKAN Furniture — Digital Showroom Concept (v2)
 
 **NEXORA CONCEPT / DEMO** — an interactive sales demonstration of what a digital commerce
 experience for **EMKAN Furniture (Tanta, Egypt)** could look and feel like.
 
+**v2:** Arabic-first (RTL) with a live **عربي / English** toggle · **Dark / Light** theme ·
+pinned scroll story (The Idea) · 12 guided demo notes.
+
 > This is **not** the final production website. Products, prices, photography, contact
 > details and availability are realistic **placeholders** until EMKAN supplies real data.
 
-Live idea: **DIGITAL SHOWROOM → DISCOVER → FILTER → COMPARE → TRUST → BUY**
+Live idea: **الفكرة → DISCOVER → FILTER → COMPARE → TRUST → BUY**
 
 ---
 
@@ -15,42 +18,56 @@ Live idea: **DIGITAL SHOWROOM → DISCOVER → FILTER → COMPARE → TRUST → 
 | # | Section | What it demonstrates |
 |---|---------|----------------------|
 | 01 | Hero | Category, quality and purpose in one screen · two-intent CTAs · floating product metadata |
-| 02 | Shop by Category | 8 entry points (by room + by type), each applying a live catalog filter |
-| 03 | Featured Collection | Curated start · bento hierarchy · hover image swap · quick view · add to cart |
-| 04 | Smart Filtering | **Functional** filters: category, room, style, price, color, material + search + sort |
-| 05 | Product Detail | Gallery, colors (live image change), specs, availability, WhatsApp CTA, demo cart |
-| 06 | Product Story | Scroll-driven MATERIAL → CRAFT → COMFORT → DIMENSIONS with sticky visual |
-| 07 | Trust | Showroom, hours, delivery, warranty — every unverified fact marked `TO BE CONFIRMED` |
-| 08 | Digital Sales System | The lead flow the real site would connect, visualized |
-| 09 | Before / After | Draggable comparison — "we are extending the showroom into the digital world" |
-| 10 | Why This Website | The 7 principles behind the design |
+| 02 | The Idea | **Pinned 3-step scroll story** — physical showroom → digital showroom → 24/7 access (custom SVG scenes, progress rail) |
+| 03 | Shop by Category | 8 entry points (by room + by type), each applying a live catalog filter |
+| 04 | Featured Collection | Curated start · bento hierarchy · hover image swap · quick view · add to cart |
+| 05 | Smart Filtering | **Functional** filters: category, room, style, price, color, material + search + sort + removable chips |
+| 06 | Product Story | Scroll-driven MATERIAL → STITCH DETAIL → CRAFT → COMFORT with sticky visual (4 frames) |
+| 07 | Digital Sales System | The lead flow the real site would connect, visualized (7 steps) |
+| 08 | Before / After | Draggable comparison — "we are extending the showroom into the digital world" |
+| 09 | Why NEXORA | The 7 principles behind the design |
+| 10 | Personalization | Seven-card grid showing how the future configurator starts |
 | — | Final | Honest framing + `BUILD THE REAL EXPERIENCE` / `TALK TO NEXORA` |
+| — | Product Detail (modal) | Gallery, colors (live image change), specs, availability, WhatsApp CTA, demo cart |
 
-Plus: **NEXORA DEMO mode** (floating toggle, bottom-right) — turns on per-section
-“WHY THIS SECTION?” annotations with a guided panel (11 notes, prev/next).
+Plus: **NEXORA DEMO mode** (floating toggle, bottom-right) — per-section numbered
+annotations, a scroll-linked bubble and a guided side panel (**12 notes**, prev/next,
+including a dedicated product-detail note) — all bilingual.
 
----
+### Language & theme
+
+- **AR-first:** Arabic is the default and the source of truth in the HTML; the EN
+  toggle swaps every string — static (`data-i18n`), dynamic (cards, filters, cart,
+  demo notes) and even `lang`/`dir`/`page title` — without a reload. The toggle
+  persists in `localStorage`.
+- **RTL-safe:** logical CSS properties throughout (`inset-inline-*`,
+  `border-inline-start`…), direction-aware off-screen offsets, and an RTL guard that
+  neutralises Latin letter-spacing on Arabic text.
+- **Dark / Light:** real token sets for both themes (default: dark), persisted; the
+  fixed-dark bands keep their identity in either theme.
 
 ## Tech
 
 - Plain **HTML + CSS + JavaScript** — no build step, no framework
-- Zero external dependencies (fonts from Google Fonts only)
+- Zero external dependencies (fonts from Google Fonts only, `display=swap`)
 - All product imagery is **generated inline SVG** — nothing can 404
-- Vanilla `IntersectionObserver` reveals, pointer parallax, drag interactions
+- Vanilla `IntersectionObserver` reveals + scroll rAF, pointer parallax, drag interactions
 - Responsive: desktop / tablet / mobile (1200 · 960 · 640 breakpoints)
-- Semantic HTML, ARIA on dialogs, keyboard support (Esc, arrow keys on comparison)
+- Semantic HTML, ARIA on dialogs, keyboard support (Esc, arrow keys on comparison),
+  `prefers-reduced-motion` respected
 
 ## Project structure
 
 ```
 emkan-furniture-demo/
-├── index.html            # single page — all sections + modals + demo layer
+├── index.html            # single page — all sections + modals + demo layer (AR source)
 ├── css/
-│   └── styles.css        # design tokens, layout, responsive, motion
+│   └── styles.css        # design tokens (dark/light), RTL logic, layout, responsive
 ├── js/
-│   ├── data.js           # products, categories, filter values, demo annotations
-│   ├── visuals.js        # SVG scene generator (rooms, product shots, story frames)
-│   └── app.js            # filters, PDP, cart, search, demo mode, forms
+│   ├── i18n.js           # language engine — EN dictionary, AR capture, dir/title sync
+│   ├── data.js           # bilingual products, categories, filters, 12 demo notes
+│   ├── visuals.js        # SVG scene generator (rooms, product shots, story/idea frames)
+│   └── app.js            # filters, PDP, cart, search, demo mode, forms, scroll stories
 ├── README.md
 └── DEMO_PRESENTATION.md  # full design / UX / conversion rationale
 ```
@@ -103,9 +120,12 @@ npm i -g netlify-cli && netlify deploy --prod --dir .
 
 ## Verification
 
-Tested headless (Edge + Playwright): **48/48 checks pass** — filters, search, sort,
-PDP gallery & colors, cart, demo mode, before/after drag, contact form, mobile menu,
-mobile filter sheet, zero JS errors, no horizontal scroll at 375px / 1440px.
+Tested headless (Edge + Playwright): **70/70 checks pass** — boot state (ar/RTL/dark),
+render counts, filters & chips, category-card filtering, PDP gallery/swatches, cart
+(+qty, badge, checkout guard), search overlay, **full AR⇄EN round-trip** (dir, dynamic
+strings, demo notes), theme toggle, demo mode (FAB, pop, markers, panel, 12-note prog),
+idea scroll story, story-step activation, before/after drag, contact form validation,
+mobile menu + filter sheet at 390px, zero JS/console errors.
 
 ## License / status
 
