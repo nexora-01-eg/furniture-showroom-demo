@@ -483,7 +483,7 @@ window.addEventListener('resize', ideaTick);
 /* ---------------- product story ---------------- */
 const storyKinds = ['material', 'detail', 'craft', 'comfort'];
 $('#storyVisual').innerHTML = storyKinds
-  .map((k, i) => `<div class="story-frame ${i === 0 ? 'on' : ''}" data-f="${i}">${VIS.storyFrame(k)}</div>`).join('');
+  .map((k, i) => `<div class="story-frame ${i === 0 ? 'on' : ''}" data-f="${i}">${VIS.storyFrame(k)}${k === 'detail' ? '<img class="frame-photo" src="img/atmos/leather-stitch.jpg" alt="" onerror="this.remove()">' : ''}</div>`).join('');
 
 const stepIO = new IntersectionObserver(es => {
   es.forEach(e => {
