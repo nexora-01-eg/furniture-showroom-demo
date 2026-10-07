@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EMKAN Furniture — Digital Showroom Concept | NEXORA Demo</title>
+<meta name="description" content="A NEXORA concept demo: a digital furniture showroom for EMKAN Furniture, Tanta, Egypt. Discover, filter, compare and choose furniture online.">
+<meta property="og:title" content="EMKAN Furniture — Digital Showroom Concept">
+<meta property="og:description" content="Interactive NEXORA concept demo: a digital furniture showroom built for discovery, comparison and trust.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#191917">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a class="brand" href="#hero" aria-label="EMKAN home">
+      <span class="brand-mark">EMKAN</span>
+      <span class="brand-sub">Furniture, Designed for Living.</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Main">
+      <a href="#categories">Categories</a>
+      <a href="#featured">Collection</a>
+      <a href="#catalog">Shop</a>
+      <a href="#story">Product Story</a>
+      <a href="#trust">Showroom</a>
+      <a href="#why">Why EMKAN</a>
+    </nav>
+
+    <div class="nav-actions">
+      <span class="demo-chip" title="This experience is a NEXORA concept demo">NEXORA CONCEPT / DEMO</span>
+      <button class="icon-btn" id="searchBtn" aria-label="Search products">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="icon-btn cart-btn" id="cartBtn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h2l2.2 10.5a1.5 1.5 0 0 0 1.5 1.2h7.6a1.5 1.5 0 0 0 1.5-1.2L20.5 9H7"/><circle cx="10" cy="20.5" r="1.4"/><circle cx="17.5" cy="20.5" r="1.4"/></svg>
+        <span class="cart-count" id="cartCount" hidden>0</span>
+      </button>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu -->
+<div class="m-menu" id="mMenu" aria-hidden="true">
+  <a href="#categories">Categories</a>
+  <a href="#featured">Collection</a>
+  <a href="#catalog">Shop</a>
+  <a href="#story">Product Story</a>
+  <a href="#system">How It Works</a>
+  <a href="#trust">Showroom</a>
+  <a href="#why">Why EMKAN</a>
+  <a class="m-menu-cta" href="#final">Build the Real Experience</a>
+</div>
+
+<main>
+
+<!-- ================= 01 · HERO ================= -->
+<section class="hero" id="hero" data-demo="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <span class="kicker rv">DIGITAL SHOWROOM CONCEPT — TANTA, EGYPT</span>
+      <h1 class="rv">EMKAN<br><span class="grad">Furniture, Designed for Living.</span></h1>
+      <p class="sub rv">A digital furniture showroom concept designed to make discovering, comparing and choosing furniture easier.</p>
+      <div class="hero-cta rv">
+        <a class="btn btn-solid" href="#featured">EXPLORE COLLECTION</a>
+        <a class="btn btn-ghost" href="#system">SEE HOW IT WORKS</a>
+      </div>
+      <ul class="hero-tags rv" aria-label="Showroom facts">
+        <li>Home &amp; Office Furniture</li>
+        <li>Tanta, Egypt</li>
+        <li>Concept Demo — not the live store</li>
+      </ul>
+    </div>
+
+    <div class="hero-visual rv" id="heroVisual">
+      <div class="hero-frame">
+        <div class="hero-img" id="heroImg"><!-- room scene injected --></div>
+        <div class="hero-sheen" aria-hidden="true"></div>
+      </div>
+      <div class="chip chip-1" aria-hidden="true"><b>Haven 3-Seater Sofa</b><span>EGP 12,900 · demo price</span></div>
+      <div class="chip chip-2" aria-hidden="true"><b>Showroom</b><span>Tanta · visits by appointment</span></div>
+      <div class="chip chip-3" aria-hidden="true"><b>Material</b><span>Linen blend · solid beech legs</span></div>
+    </div>
+  </div>
+  <a class="hero-scroll" href="#categories" aria-label="Scroll to categories"><span></span></a>
+</section>
+
+<!-- ================= 02 · SHOP BY CATEGORY ================= -->
+<section class="sec sec-alt" id="categories" data-demo="categories">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">SECTION 02</span>
+      <h2>Shop by Category</h2>
+      <p>Pick the way you think — by room or by product type. Every card jumps straight into the filtered catalog.</p>
+    </div>
+    <div class="cat-grid" id="catGrid"><!-- category cards injected --></div>
+  </div>
+</section>
+
+<!-- ================= 03 · FEATURED COLLECTION ================= -->
+<section class="sec" id="featured" data-demo="featured">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">SECTION 03</span>
+      <h2>Featured Collection</h2>
+      <p>A curated starting point. Real product-card behavior: price, availability, quick view and a path to purchase.</p>
+    </div>
+    <div class="feat-grid" id="featGrid"><!-- featured products injected --></div>
+    <div class="sec-foot rv">
+      <a class="btn btn-line" href="#catalog">View full catalog</a>
+      <span class="note">Prices shown are demo placeholders.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 · SMART FILTERING ================= -->
+<section class="sec sec-alt" id="catalog" data-demo="filters">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">SECTION 04</span>
+      <h2>Smart Filtering</h2>
+      <p>Category · Room · Style · Price · Color · Material — every filter below is functional. Try combining them.</p>
+    </div>
+
+    <div class="shop">
+      <aside class="filters" id="filters" aria-label="Product filters">
+        <div class="filters-head">
+          <h3>Filters</h3>
+          <button class="link-btn" id="clearFilters">Clear all</button>
+          <button class="filters-close" id="filtersClose" aria-label="Close filters">✕</button>
+        </div>
+
+        <div class="f-group" data-f="category">
+          <h4>Category</h4>
+          <div class="chips" id="fCategory"></div>
+        </div>
+        <div class="f-group" data-f="room">
+          <h4>Room</h4>
+          <div class="chips" id="fRoom"></div>
+        </div>
+        <div class="f-group" data-f="style">
+          <h4>Style</h4>
+          <div class="chips" id="fStyle"></div>
+        </div>
+        <div class="f-group" data-f="price">
+          <h4>Price <span class="f-hint" id="priceHint">Any</span></h4>
+          <input type="range" id="fPrice" min="2000" max="20000" step="500" value="20000" aria-label="Maximum price">
+          <div class="range-legend"><span>EGP 2k</span><span>EGP 20k+</span></div>
+        </div>
+        <div class="f-group" data-f="color">
+          <h4>Color</h4>
+          <div class="swatches" id="fColor"></div>
+        </div>
+        <div class="f-group" data-f="material">
+          <h4>Material</h4>
+          <div class="chips" id="fMaterial"></div>
+        </div>
+      </aside>
+
+      <div class="shop-main">
+        <div class="shop-bar">
+          <button class="btn btn-line btn-sm" id="filtersOpen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+            Filters <span id="fBadge" hidden>0</span>
+          </button>
+          <label class="search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="search" id="fSearch" placeholder="Search the catalog…" aria-label="Search products">
+          </label>
+          <select id="fSort" aria-label="Sort products">
+            <option value="featured">Sort: Featured</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+            <option value="name">Name: A → Z</option>
+          </select>
+        </div>
+
+        <div class="active-filters" id="activeFilters"></div>
+        <p class="result-count" id="resultCount" aria-live="polite"></p>
+
+        <div class="grid" id="catalogGrid"></div>
+
+        <div class="empty" id="emptyState" hidden>
+          <p><b>No products match these filters.</b><br>Try removing a filter — the catalog is a demo set of items.</p>
+          <button class="btn btn-line btn-sm" id="emptyReset">Reset filters</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 · PRODUCT STORY ================= -->
+<section class="sec story" id="story" data-demo="story">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">SECTION 06</span>
+      <h2>Product Story</h2>
+      <p>Selected products deserve more than one photo. Material, craft, comfort and dimensions — told as you scroll.</p>
+    </div>
+
+    <div class="story-in">
+      <div class="story-visual" id="storyVisual" aria-hidden="true"><!-- story frames injected --></div>
+      <div class="story-steps">
+        <article class="story-step" data-step="0">
+          <span class="s-num">01</span>
+          <h3>MATERIAL</h3>
+          <p>A linen-blend upholstery over a kiln-dried solid beech frame. In production, every claim here would link to the supplier specification sheet EMKAN provides.</p>
+        </article>
+        <article class="story-step" data-step="1">
+          <span class="s-num">02</span>
+          <h3>CRAFT</h3>
+          <p>Reinforced joinery, hand-finished edges, upholstery pulled and stapled by hand. Detail photography is what turns a commodity into a considered purchase.</p>
+        </article>
+        <article class="story-step" data-step="2">
+          <span class="s-num">03</span>
+          <h3>COMFORT</h3>
+          <p>Multi-density foam with a soft top layer and fiber-filled back cushions — support that keeps its shape. Comfort copy reduces returns and hesitation.</p>
+        </article>
+        <article class="story-step" data-step="3">
+          <span class="s-num">04</span>
+          <h3>DIMENSIONS</h3>
+          <p>W 220 × D 95 × H 85 cm, seat height 45 cm. Publishing dimensions answers the questions customers usually send one message at a time on WhatsApp.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 · TRUST ================= -->
+<section class="sec sec-alt" id="trust" data-demo="trust">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">SECTION 07</span>
+      <h2>The Showroom, Extended</h2>
+      <p>Trust is built on real information. Anything not yet verified is clearly marked as <b>TO BE CONFIRMED</b> — no invented statistics.</p>
+    </div>
+
+    <div class="trust-grid">
+      <article class="t-card rv">
+        <div class="t-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+        <h3>Showroom</h3>
+        <p class="t-strong">Tanta, Geha El Gharbia</p>
+        <p>Full street address, landmark &amp; map pin <span class="tbc">TO BE CONFIRMED</span></p>
+      </article>
+
+      <article class="t-card rv">
+        <div class="t-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.5l3.5 2"/></svg></div>
+        <h3>Opening Hours</h3>
+        <p class="t-strong">Daily schedule</p>
+        <p>Exact working hours &amp; Friday schedule <span class="tbc">TO BE CONFIRMED</span></p>
+      </article>
+
+      <article class="t-card rv">
+        <div class="t-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg></div>
+        <h3>Delivery</h3>
+        <p class="t-strong">Delivery &amp; installation concept</p>
+        <p>Coverage areas, fees and lead times <span class="tbc">TO BE CONFIRMED</span></p>
+      </article>
+
+      <article class="t-card rv">
+        <div class="t-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3.5 5 6.5v5c0 4.3 3 7.7 7 9 4-1.3 7-4.7 7-9v-5Z"/><path d="m9 12 2 2 4-4.5"/></svg></div>
+        <h3>Quality Statement</h3>
+        <p class="t-strong">Materials, warranty &amp; after-sales</p>
+        <p>Warranty period &amp; service terms <span class="tbc">TO BE CONFIRMED</span></p>
+      </article>
+
+      <article class="t-card t-card-wide rv">
+        <div class="t-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5.5h16v11H8l-4 3.5z"/></svg></div>
+        <h3>Talk to EMKAN</h3>
+        <p>Phone / WhatsApp numbers and response hours <span class="tbc">TO BE CONFIRMED</span> — in production this becomes a click-to-chat CTA on every product page.</p>
+        <div class="t-actions">
+          <button class="btn btn-line btn-sm" data-open-contact>Send an inquiry (demo)</button>
+        </div>
+      </article>
+
+      <article class="t-card t-map rv" aria-label="Map placeholder">
+        <div class="map-ph">
+          <span class="map-pin" aria-hidden="true"></span>
+          <b>TANTA</b>
+          <span>Showroom map — connected in production</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 08 · DIGITAL SALES SYSTEM ================= -->
+<section class="sec dark" id="system" data-demo="system">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">SECTION 08</span>
+      <h2>The Digital Sales System</h2>
+      <p>What this website would connect — a full path from first discovery to a lead in EMKAN's hands.</p>
+    </div>
+
+    <ol class="flow" id="flow">
+      <li class="flow-step rv"><span class="f-n">01</span><b>Customer discovers product</b><p>Search, category or filter leads them to the right piece.</p></li>
+      <li class="flow-step rv"><span class="f-n">02</span><b>Views full details</b><p>Gallery, dimensions, materials, price and availability.</p></li>
+      <li class="flow-step rv"><span class="f-n">03</span><b>Cart / WhatsApp inquiry</b><p>Two doors: demo cart now, real WhatsApp in production.</p></li>
+      <li class="flow-step rv"><span class="f-n">04</span><b>Order or inquiry submitted</b><p>Structured data instead of scattered voice notes.</p></li>
+      <li class="flow-step rv"><span class="f-n">05</span><b>Business receives the lead</b><p>Product, name and intent arrive together.</p></li>
+      <li class="flow-step rv"><span class="f-n">06</span><b>Customer follow-up</b><p>Quote, visit booking or delivery — tracked to close.</p></li>
+    </ol>
+    <p class="flow-note rv">Concept flow — infrastructure (payments, inventory, CRM) is scoped for the production build.</p>
+  </div>
+</section>
+
+<!-- ================= 09 · BEFORE / AFTER ================= -->
+<section class="sec" id="compare" data-demo="compare">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">SECTION 09</span>
+      <h2>Before / After</h2>
+      <p>We are extending the showroom into the digital world — not replacing it. Drag the handle to compare.</p>
+    </div>
+
+    <div class="ba rv" id="ba">
+      <div class="ba-pane ba-after">
+        <span class="ba-label after">AFTER — with this website</span>
+        <ul>
+          <li>Organized catalog</li>
+          <li>Product discovery by room &amp; type</li>
+          <li>Search</li>
+          <li>Filtering</li>
+          <li>Full product pages</li>
+          <li>Digital inquiries</li>
+          <li>24/7 sales channel</li>
+        </ul>
+      </div>
+      <div class="ba-pane ba-before" id="baBefore">
+        <span class="ba-label before">BEFORE — today</span>
+        <ul>
+          <li>Traditional showroom dependence</li>
+          <li>Manual WhatsApp questions</li>
+          <li>Products scattered across social media</li>
+          <li>Limited online discovery</li>
+        </ul>
+      </div>
+      <div class="ba-handle" id="baHandle" role="slider" tabindex="0" aria-label="Comparison position" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
+        <span aria-hidden="true">⟷</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 10 · WHY THIS WEBSITE ================= -->
+<section class="sec sec-alt" id="why" data-demo="why">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="kicker">SECTION 10</span>
+      <h2>Why This Version?</h2>
+      <p>The principles behind every decision in this demo.</p>
+    </div>
+    <ol class="why-grid">
+      <li class="why-card rv"><span>01</span><b>Product-first</b><p>Customers see furniture before they read company history.</p></li>
+      <li class="why-card rv"><span>02</span><b>Easy discovery</b><p>Categories, search and filters reduce the path to the right piece.</p></li>
+      <li class="why-card rv"><span>03</span><b>Strong visual presentation</b><p>Large imagery, generous spacing, clear hierarchy.</p></li>
+      <li class="why-card rv"><span>04</span><b>Searchable catalog</b><p>The whole range, findable in seconds.</p></li>
+      <li class="why-card rv"><span>05</span><b>Mobile-first</b><p>Touch interactions redesigned, not shrunk.</p></li>
+      <li class="why-card rv"><span>06</span><b>Conversion-focused</b><p>Every section has one clear next step.</p></li>
+      <li class="why-card rv why-wide"><span>07</span><b>Ready for future e-commerce infrastructure</b><p>Catalog structure, cart and product data model are already shaped for payments, inventory and checkout when EMKAN is ready.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= FINAL ================= -->
+<section class="sec final dark" id="final" data-demo="final">
+  <div class="wrap">
+    <div class="final-in rv">
+      <span class="kicker">FINAL</span>
+      <h2>THIS IS NOT THE FINAL WEBSITE.</h2>
+      <p>It is a demonstration of what EMKAN's digital commerce experience could become.</p>
+      <p class="final-sub">The final website would be designed around EMKAN's actual brand identity, real products, real photography, real pricing, real categories, real customer journey and real business requirements.</p>
+      <div class="final-cta">
+        <button class="btn btn-solid" data-open-contact>BUILD THE REAL EXPERIENCE</button>
+        <a class="btn btn-ghost" href="https://wa.me/201000000000?text=Hello%20NEXORA%20—%20I%20saw%20the%20EMKAN%20concept%20demo%20and%20I%27d%20like%20to%20talk." target="_blank" rel="noopener">TALK TO NEXORA</a>
+      </div>
+      <p class="final-note">WhatsApp number above is a demo placeholder.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div>
+      <div class="brand-mark">EMKAN</div>
+      <p>Furniture, Designed for Living. — Tanta, Egypt</p>
+    </div>
+    <div class="f-links">
+      <a href="#categories">Categories</a>
+      <a href="#catalog">Shop</a>
+      <a href="#trust">Showroom</a>
+      <a href="#final">Contact</a>
+    </div>
+    <div class="f-demo">
+      <span class="demo-chip">NEXORA CONCEPT / DEMO</span>
+      <p>This is an interactive sales demo built by NEXORA. Products, prices and contact details are placeholders until supplied by EMKAN.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= PRODUCT DETAIL MODAL (05) ================= -->
+<div class="modal" id="pdp" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Product detail">
+  <div class="modal-bd" data-close></div>
+  <div class="modal-card pdp-card">
+    <button class="modal-x" data-close aria-label="Close">✕</button>
+    <div class="pdp">
+      <div class="pdp-gallery">
+        <div class="pdp-main" id="pdpMain"></div>
+        <div class="pdp-thumbs" id="pdpThumbs"></div>
+      </div>
+      <div class="pdp-info">
+        <span class="p-cat" id="pdpCat"></span>
+        <h3 id="pdpName"></h3>
+        <div class="pdp-price-row">
+          <span class="pdp-price" id="pdpPrice"></span>
+          <span class="pdp-avail" id="pdpAvail"></span>
+        </div>
+        <p class="pdp-desc" id="pdpDesc"></p>
+
+        <div class="pdp-specs">
+          <div><h5>Dimensions</h5><p id="pdpDims"></p></div>
+          <div><h5>Materials</h5><p id="pdpMat"></p></div>
+          <div><h5>Delivery</h5><p id="pdpDelivery"></p></div>
+        </div>
+
+        <div class="pdp-colors">
+          <h5>Color <span id="pdpColorName"></span></h5>
+          <div class="swatches" id="pdpSwatches"></div>
+        </div>
+
+        <div class="pdp-actions">
+          <button class="btn btn-solid" id="pdpAdd">ADD TO CART <span class="tiny">(demo)</span></button>
+          <a class="btn btn-wa" id="pdpWa" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.2-.7l.5-.6c.1-.2.1-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.2 2.1-.5 3.6a12 12 0 0 0 4.6 4.9c1.7.9 2.4.9 3.3.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+            ASK ON WHATSAPP <span class="tiny">(demo)</span>
+          </a>
+        </div>
+        <p class="pdp-note">Demo product — imagery, price and stock are placeholders.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= CONTACT MODAL ================= -->
+<div class="modal" id="contactModal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Contact">
+  <div class="modal-bd" data-close></div>
+  <div class="modal-card contact-card">
+    <button class="modal-x" data-close aria-label="Close">✕</button>
+    <span class="kicker">NEXORA</span>
+    <h3>Build the real EMKAN experience</h3>
+    <p class="contact-sub">Leave your details and NEXORA will reply with scope, timeline and next steps. <b>This demo form does not send data.</b></p>
+    <form id="contactForm" novalidate>
+      <label>Name<input type="text" name="name" required placeholder="Your name"></label>
+      <label>Phone / WhatsApp<input type="tel" name="phone" required placeholder="01xxxxxxxxx"></label>
+      <label>What do you need?<textarea name="msg" rows="3" placeholder="New website, online store, catalog…"></textarea></label>
+      <p class="form-err" id="formErr" hidden>Please fill in name and a valid phone number.</p>
+      <button class="btn btn-solid" type="submit">SEND INQUIRY</button>
+    </form>
+  </div>
+</div>
+
+<!-- ================= CART DRAWER ================= -->
+<div class="drawer" id="cartDrawer" aria-hidden="true">
+  <div class="drawer-bd" data-close></div>
+  <aside class="drawer-in" role="dialog" aria-modal="true" aria-label="Cart">
+    <header>
+      <h3>Your Cart <span class="tiny">(demo)</span></h3>
+      <button class="modal-x" data-close aria-label="Close cart">✕</button>
+    </header>
+    <div class="cart-items" id="cartItems"></div>
+    <footer>
+      <div class="cart-total"><span>Subtotal</span><b id="cartTotal">EGP 0</b></div>
+      <p class="cart-note">Checkout is intentionally disabled — this is a concept demo. In production this hands off to order / inquiry.</p>
+      <button class="btn btn-solid" id="checkoutBtn">REQUEST ORDER</button>
+      <a class="btn btn-wa" id="cartWa" href="https://wa.me/201000000000" target="_blank" rel="noopener">ORDER VIA WHATSAPP (DEMO)</a>
+    </footer>
+  </aside>
+</div>
+
+<!-- ================= DEMO MODE ================= -->
+<button class="demo-fab" id="demoFab" aria-pressed="false">
+  <span class="dot"></span> NEXORA DEMO
+</button>
+
+<aside class="demo-panel" id="demoPanel" aria-hidden="true" aria-label="Demo explanation">
+  <header>
+    <div>
+      <span class="kicker">NEXORA DEMO MODE</span>
+      <p class="demo-prog" id="demoProg">01 / 11</p>
+    </div>
+    <button class="modal-x" id="demoClose" aria-label="Close demo panel">✕</button>
+  </header>
+  <div class="demo-body">
+    <span class="demo-label" id="demoLabel">WHY THIS SECTION?</span>
+    <h3 id="demoTitle">Hero</h3>
+    <p id="demoText"></p>
+    <p class="demo-hint" id="demoHint"></p>
+  </div>
+  <footer>
+    <button class="btn btn-line btn-sm" id="demoPrev">← Previous</button>
+    <button class="btn btn-line btn-sm" id="demoNext">Next →</button>
+  </footer>
+</aside>
+<span class="demo-corner">NEXORA CONCEPT / DEMO — NOT THE LIVE STORE</span>
+
+<!-- ================= TOASTS / SEARCH OVERLAY ================= -->
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<div class="search-overlay" id="searchOverlay" aria-hidden="true">
+  <div class="search-box">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" id="searchOverlayInput" placeholder="Search sofas, tables, office…" aria-label="Search products">
+    <button class="modal-x" data-close aria-label="Close search">✕</button>
+  </div>
+  <div class="search-results" id="searchResults"></div>
+</div>
+
+<a class="wa-float" href="https://wa.me/201000000000?text=Hello%20EMKAN%20(demo%20inquiry)" target="_blank" rel="noopener" aria-label="WhatsApp demo">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.6.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.2-.7l.5-.6c.1-.2.1-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.2 2.1-.5 3.6a12 12 0 0 0 4.6 4.9c1.7.9 2.4.9 3.3.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+</a>
+
+<script src="js/data.js"></script>
+<script src="js/visuals.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
