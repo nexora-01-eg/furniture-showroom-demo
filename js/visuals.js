@@ -1,5 +1,5 @@
 /* ============================================================
-   EMKAN DEMO — generated SVG imagery
+   BAYT DEMO — generated SVG imagery
    Every product "photo" is drawn locally as inline SVG so the
    demo has zero external image dependencies and never shows a
    broken asset. Production replaces these with real photography.
@@ -337,7 +337,7 @@ const VIS = (() => {
   function heroScene(){
     const u = ++uid;
     const sofa = PAL.beige, tbl = PAL.brown;
-    return `<svg viewBox="0 0 1000 760" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EMKAN living room with Haven sofa">
+    return `<svg viewBox="0 0 1000 760" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BAYT living room with Haven sofa">
       <defs>
         <linearGradient id="hw${u}" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stop-color="#EDE7DC"/><stop offset="1" stop-color="#DED4C4"/>
@@ -444,7 +444,7 @@ const VIS = (() => {
           <rect x="96" y="96" width="608" height="330" rx="10" fill="#FBF8F1" stroke="#C9B79B" stroke-width="4"/>
           <rect x="96" y="96" width="608" height="74" rx="10" fill="#1F1E1B"/>
           <rect x="96" y="158" width="608" height="12" fill="#1F1E1B"/>
-          <text x="400" y="145" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" font-weight="800" letter-spacing="16" fill="#D8C7AE">EMKAN</text>
+          <text x="400" y="145" text-anchor="middle" font-family="Inter, sans-serif" font-size="40" font-weight="800" letter-spacing="16" fill="#D8C7AE">BAYT</text>
           <rect x="126" y="196" width="330" height="204" rx="6" fill="url(#ig${u})" stroke="#8B7A5E" stroke-width="4"/>
           <rect x="482" y="196" width="192" height="204" rx="6" fill="url(#ig${u})" stroke="#8B7A5E" stroke-width="4"/>
           <path d="M470 196v204" stroke="#8B7A5E" stroke-width="4"/>
@@ -496,8 +496,8 @@ const VIS = (() => {
         <rect x="60" y="106" width="680" height="18" fill="#1E2027"/>
         <circle cx="94" cy="97" r="7" fill="#E0705C"/><circle cx="118" cy="97" r="7" fill="#E0B45C"/><circle cx="142" cy="97" r="7" fill="#6FBF73"/>
         <rect x="180" y="86" width="420" height="22" rx="11" fill="#262932"/>
-        <text x="200" y="102" font-family="Inter, sans-serif" font-size="12" fill="#8B93A3">emkan-furniture.com</text>
-        <text x="100" y="168" font-family="Inter, sans-serif" font-size="20" font-weight="800" letter-spacing="6" fill="#F5F1E9">EMKAN</text>
+        <text x="200" y="102" font-family="Inter, sans-serif" font-size="12" fill="#8B93A3">bayt-furniture.demo</text>
+        <text x="100" y="168" font-family="Inter, sans-serif" font-size="20" font-weight="800" letter-spacing="6" fill="#F5F1E9">BAYT</text>
         <rect x="560" y="150" width="150" height="30" rx="15" fill="#C9B79B"/>
         <text x="582" y="170" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="#1F1E1B">24/7 SHOP</text>
         ${cards}
@@ -535,7 +535,7 @@ const VIS = (() => {
           <rect x="120" y="180" width="420" height="290" rx="10" fill="#1E2128" stroke="#3A3F4A" stroke-width="3"/>
           <rect x="120" y="180" width="420" height="58" rx="10" fill="#14161B"/>
           <rect x="120" y="228" width="420" height="10" fill="#14161B"/>
-          <text x="330" y="222" text-anchor="middle" font-family="Inter, sans-serif" font-size="30" font-weight="800" letter-spacing="12" fill="#C9B79B">EMKAN</text>
+          <text x="330" y="222" text-anchor="middle" font-family="Inter, sans-serif" font-size="30" font-weight="800" letter-spacing="12" fill="#C9B79B">BAYT</text>
           <rect x="150" y="262" width="176" height="176" rx="6" fill="#262A32" stroke="#4A5060" stroke-width="3"/>
           <rect x="346" y="262" width="164" height="80" rx="6" fill="#262A32" stroke="#4A5060" stroke-width="3"/>
           <rect x="346" y="358" width="164" height="80" rx="6" fill="#262A32" stroke="#4A5060" stroke-width="3"/>

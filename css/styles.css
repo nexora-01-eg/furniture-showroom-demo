@@ -1,5 +1,5 @@
 /* ============================================================
-   EMKAN DIGITAL SHOWROOM — NEXORA CONCEPT DEMO (v2)
+   BAYT FURNITURE — CONCEPT SHOWROOM DEMO
    Arabic-first RTL · EN switch · Dark / Light · zero deps
    ============================================================ */
 
@@ -512,7 +512,7 @@ select{
 }
 .ba-handle:focus-visible span{outline:3px solid var(--ink);outline-offset:3px}
 
-/* ---------------- WHY NEXORA PIPELINE ---------------- */
+/* ---------------- WHY-CONCEPT PIPELINE ---------------- */
 .pipe{list-style:none;display:grid;grid-template-columns:repeat(9,1fr);gap:10px}
 .pipe li{
   background:var(--surface);border:1px solid var(--line);border-radius:16px;

@@ -1,7 +1,7 @@
 /* ============================================================
-   EMKAN DEMO — data layer (v2, bilingual AR/EN)
+   BAYT DEMO — data layer (v2, bilingual AR/EN)
    All products, prices and availability are DEMO PLACEHOLDERS.
-   Replace with EMKAN's real catalog in production.
+   Replace with a real catalog in production.
    ============================================================ */
 
 /* ---------- localized labels (filter values stay English keys) ---------- */
@@ -51,8 +51,8 @@ const lbl = (kind, key) => {
 };
 
 const DELIVERY = {
-  ar:'توصيل وتركيب داخل طنطا والدلتا — الشروط «تُوضَّح مع إمكان».',
-  en:'Delivery & installation across Tanta and the Delta — terms TO BE CONFIRMED with EMKAN.'
+  ar:'توصيل وتركيب داخل نطاق التغطية — الشروط تجريبية.',
+  en:'Delivery & installation within the coverage area — demo terms.'
 };
 
 /* ---------- categories ---------- */
@@ -304,8 +304,8 @@ const DEMO_NOTES = [
       en:'A full catalog can overwhelm. A featured row gives first-time visitors a confident starting point while demonstrating real product-card behavior: price, stock status, hover imagery and quick actions.'
     },
     hint:{
-      ar:'أول كارت أكبر عن قصد — التسلسل البصري بيقول للعين منين تبدأ. في التنفيذ الحقيقي، «مميّز» بتبقى أداة تجهيز محتوى بيتحكم فيها إمكان.',
-      en:'The first card is deliberately larger — visual hierarchy tells the eye where to begin. In production, “featured” becomes a merchandising tool EMKAN controls.'
+      ar:'أول كارت أكبر عن قصد — التسلسل البصري بيقول للعين منين تبدأ. في النسخة الحقيقية، «مميّز» بتبقى أداة عرض بيتحكم فيها صاحب المعرض.',
+      en:'The first card is deliberately larger — visual hierarchy tells the eye where to begin. In production, “featured” becomes a merchandising tool the showroom owner controls.'
     }
   },
   {
@@ -353,11 +353,11 @@ const DEMO_NOTES = [
     title:{ ar:'08 — نظام التحويل', en:'08 — Digital Sales System' },
     text:{
       ar:'دي الحاجة اللي الموقع بيربطها: زيارة → منتج → تفاصيل → مقارنة → ثقة → تواصل → Lead في إيدك. عرض النظام بيساعد النشاط يشوف الموقع كقناة بيع، مش كتيّب دعائي.',
-      en:'This is what the website would connect: discovery → details → comparison → trust → inquiry → lead in EMKAN’s hands. Showing the system helps the business see the website as a sales channel, not a brochure.'
+      en:'This is what the website would connect: discovery → details → comparison → trust → inquiry → lead in your hands. Showing the system helps the business see the website as a sales channel, not a brochure.'
     },
     hint:{
-      ar:'الخطوة 3 ليها بابين: الديمو السلة شغّالة النهارده؛ في التنفيذ بيتضاف دفع ومخزون وصندوق Leads منظم في وقت إمكان.',
-      en:'Step 3 has two doors: the demo cart works today; production adds payments, inventory and a structured lead inbox when EMKAN is ready.'
+      ar:'الخطوة 3 ليها بابين: الديمو السلة شغّالة النهارده؛ في النسخة الكاملة بيتضاف دفع ومخزون وصندوق Leads منظم.',
+      en:'Step 3 has two doors: the demo cart works today; the full build adds payments, inventory and a structured lead inbox.'
     }
   },
   {
@@ -376,7 +376,7 @@ const DEMO_NOTES = [
   {
     id:'whynexora',
     label:{ ar:'ليه الإطار ده؟', en:'WHY THIS FRAMEWORK?' },
-    title:{ ar:'10 — ليه نكسيرا؟', en:'10 — Why NEXORA' },
+    title:{ ar:'10 — ليه الفكرة دي؟', en:'10 — Why This Concept' },
     text:{
       ar:'9 خطوات بتبرّر كل قرار في العرض ده: هوية النشاط، الجمهور، طريقة البيع، المنتجات، المشكلة، الواجهة، الهوية البصرية، الموقع، ونظام النمو — مفيش template بيتشطب على مقاسك.',
       en:'Nine steps justify every decision in this demo: business identity, audience, sales model, products, the problem, UX, visual system, website and the growth system — no template gets cut to fit you.'
@@ -395,8 +395,8 @@ const DEMO_NOTES = [
       en:'What you are seeing is a demonstration. The real website is built from your business: your logo, colors, typography, products, photography, customers and sales process.'
     },
     hint:{
-      ar:'اسحب لليمين والبطاقات بتوضّح الفرق بين demo ونسخة EMKAN الكاملة. «مفيش قالب واحد لكل نشاط».',
-      en:'Each card shows the gap between this demo and a full EMKAN build. “One template does not fit every business.”'
+      ar:'اسحب لليمين والبطاقات بتوضّح الفرق بين demo والنسخة الكاملة. «مفيش قالب واحد لكل نشاط».',
+      en:'Each card shows the gap between this demo and a full production build. “One template does not fit every business.”'
     }
   },
   {
@@ -404,12 +404,12 @@ const DEMO_NOTES = [
     label:{ ar:'ليه نقفل كده؟', en:'WHY CLOSE THIS WAY?' },
     title:{ ar:'12 — نهاية العرض', en:'12 — Not the Final Website' },
     text:{
-      ar:'إطار صادق بيبني ثقة: ده عرض لشكل تجربة التجارة الرقمية اللي ممكن تبقى تبع إمكان. الموقع الحقيقي يتصمم حول علامتك ومنتجاتك الحقيقية وأسعارك وطريقتك في البيع.',
-      en:'Honest framing builds trust: this is a demonstration of what EMKAN’s digital commerce experience could become. The real website would be designed around EMKAN’s brand, real products, real pricing and real customer journey.'
+      ar:'إطار صادق بيبني ثقة: ده عرض لشكل تجربة التجارة الرقمية لمعرض أثاث عصري. النسخة الحقيقية تتصمم حول علامة ومنتجات وأسعار وطريقة بيع حقيقية.',
+      en:'Honest framing builds trust: this is a demonstration of what a modern furniture showroom’s digital experience could be. A production website would use a real brand, real products, real pricing and a real customer journey.'
     },
     hint:{
-      ar:'«ابدأ مشروعك» بتفتح نموذج التواصل؛ «تحدث مع NEXORA» بتفتح واتساب (رقم تجريبي).',
-      en:'START YOUR PROJECT opens the inquiry form; TALK TO NEXORA opens WhatsApp (demo number).'
+      ar:'«ابدأ مشروعك» بتفتح نموذج التواصل؛ «تواصل معنا» بتفتح واتساب (رقم تجريبي).',
+      en:'START YOUR PROJECT opens the inquiry form; CONTACT US opens WhatsApp (demo number).'
     }
   }
 ];

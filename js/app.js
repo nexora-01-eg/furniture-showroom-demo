@@ -1,5 +1,5 @@
 /* ============================================================
-   EMKAN DEMO — application logic (v2)
+   BAYT DEMO — application logic (v2)
    AR/EN · dark/light · scroll story · demo explanation engine
    ============================================================ */
 (() => {
@@ -62,10 +62,10 @@ function applyTheme(t){
   themeBtn.setAttribute('aria-pressed', t === 'dark');
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.content = t === 'dark' ? '#131312' : '#F6F2EA';
-  try { localStorage.setItem('emkan-theme', t); } catch(e){}
+  try { localStorage.setItem('bayt-theme', t); } catch(e){}
 }
 let savedTheme = null;
-try { savedTheme = localStorage.getItem('emkan-theme'); } catch(e){}
+try { savedTheme = localStorage.getItem('bayt-theme'); } catch(e){}
 applyTheme(savedTheme === 'light' ? 'light' : 'dark');
 themeBtn.addEventListener('click', () => {
   const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
@@ -74,13 +74,13 @@ themeBtn.addEventListener('click', () => {
 
 /* ---------------- sound (tiny UI ticks) ---------------- */
 let soundOn = false, actx = null;
-try { soundOn = localStorage.getItem('emkan-sound') === '1'; } catch(e){}
+try { soundOn = localStorage.getItem('bayt-sound') === '1'; } catch(e){}
 const soundBtn = $('#soundBtn');
 soundBtn.setAttribute('aria-pressed', soundOn);
 soundBtn.addEventListener('click', () => {
   soundOn = !soundOn;
   soundBtn.setAttribute('aria-pressed', soundOn);
-  try { localStorage.setItem('emkan-sound', soundOn ? '1' : '0'); } catch(e){}
+  try { localStorage.setItem('bayt-sound', soundOn ? '1' : '0'); } catch(e){}
   tick(760);
 });
 function tick(freq = 520, dur = .05){
@@ -372,8 +372,8 @@ function renderPDP(){
     .map(v => `<button class="pdp-thumb ${v === pdp.variant ? 'on' : ''}" data-v="${v}" aria-label="View ${v + 1}">${PH(P_TH(p.id, v))}${VIS.productScene({ ...p, color:pdp.color }, v)}</button>`).join('');
   $('#pdpMain').innerHTML = PH(P_MAIN(p.id)) + VIS.productScene({ ...p, color:pdp.color }, pdp.variant);
   $('#pdpWa').href = 'https://wa.me/201000000000?text=' + encodeURIComponent(
-    T(`مرحبا إمكان (استفسار تجريبي) — مهتم بـ "${p.name}" (${fmt(p.price)}).`,
-      `Hello EMKAN (demo inquiry) — I'm interested in "${p.name}" (${fmt(p.price)}).`));
+    T(`مرحباً (استفسار تجريبي) — مهتم بـ "${p.name}" (${fmt(p.price)}).`,
+      `Hello (demo inquiry) — I'm interested in "${p.name}" (${fmt(p.price)}).`));
 }
 function refreshPDPImage(){
   const p = pdp.product;
@@ -443,9 +443,9 @@ function renderCart(){
   }).join('') : `<p class="cart-empty">${T('سلتك فاضية.<br>ضيف منتج عشان تشوف المسار.', 'Your cart is empty.<br>Add a product to see the flow.')}</p>`;
 
   const text = cart.length
-    ? T('مرحبا إمكان (طلب تجريبي) — أحب أطلب:%0A', 'Hello EMKAN (demo order) — I would like to order:%0A') +
+    ? T('مرحباً (طلب تجريبي) — أحب أطلب:%0A', 'Hello (demo order) — I would like to order:%0A') +
       cart.map(l => `• ${byId(l.id).name} ×${l.qty}`).join('%0A')
-    : T('مرحبا إمكان (استفسار تجريبي)', 'Hello EMKAN (demo inquiry)');
+    : T('مرحباً (استفسار تجريبي)', 'Hello (demo inquiry)');
   $('#cartWa').href = 'https://wa.me/201000000000?text=' + text;
 }
 $('#cartItems').addEventListener('click', e => {

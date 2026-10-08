@@ -1,5 +1,5 @@
 /* ============================================================
-   EMKAN DEMO — i18n (AR inline is the source of truth;
+   BAYT DEMO — i18n (AR inline is the source of truth;
    EN is translated here. Dynamic UI strings live in app.js
    and call I18N.tx(ar, en)).
    ============================================================ */
@@ -10,16 +10,16 @@ const I18N = (() => {
   const EN = {
     brandSub:'Digital showroom — interactive demo',
     navIdea:'Idea', navCats:'Categories', navProducts:'Products',
-    navFilter:'Filters', navStory:'Product', navFlow:'Flow', navWhy:'Why NEXORA', navCta:'Start your project',
+    navFilter:'Filters', navStory:'Product', navFlow:'Flow', navWhy:'Why this concept', navCta:'Start your project',
 
-    heroKicker:'NEXORA interactive demo — Tanta, Egypt',
+    heroKicker:'Interactive concept demo — furniture showroom',
     heroL1:'Your furniture deserves',
     heroL2:'a digital space to match.',
     heroSub:'An e-commerce experience designed to turn a showroom into a browsing-and-selling space that works around the clock.',
     heroCta1:'Explore the experience', heroCta2:'How it works?',
-    heroTag1:'Home & office furniture', heroTag2:'Tanta, Egypt', heroTag3:'Demo — not the live store',
+    heroTag1:'Home & office furniture', heroTag2:'Online 24/7', heroTag3:'Demo — not the live store',
     chip1t:'Haven 3-Seater Sofa', chip1s:'Demo price · EGP 12,900',
-    chip2t:'The showroom', chip2s:'Tanta — by appointment',
+    chip2t:'The showroom', chip2s:'By appointment',
     chip3t:'Material', chip3s:'Linen blend · kiln-dried beech',
 
     ideaKicker:'The idea',
@@ -43,7 +43,7 @@ const I18N = (() => {
 
     stKicker:'Product story', stTitle:'From a photo… to an experience',
     stSub:'Instead of a boring spec table, each part appears visually as you scroll: material, detail, craft and comfort.',
-    st1t:'Material', st1p:'Linen-blend upholstery over a kiln-dried beech frame. In the real site, every claim here is checked against the supplier sheet EMKAN provides.',
+    st1t:'Material', st1p:'Linen-blend upholstery over a kiln-dried beech frame. In the real site, every claim here is checked against the product spec sheet.',
     st2t:'Detail', st2p:'A regular machine stitch, sanded edges and a hand finish. Detail shots are what turn an ordinary piece into a deliberate one.',
     st3t:'Craft', st3p:'Reinforced joints, hidden fixings and assembly by trained hands. Craft is not a slogan — it is what you still feel after years.',
     st4t:'Comfort', st4p:'Layers of different-density foam under a soft fiber top — support that keeps its shape. Comfort is written down so nobody has to ask.',
@@ -67,8 +67,8 @@ const I18N = (() => {
     baB1:'Manual messages & calls', baB2:'Scattered product photos',
     baB3:'Repeated questions', baB4:'Limited, scattered catalog',
 
-    wnKicker:'Why NEXORA', wnTitle:'Not a template with your name on it',
-    wnSub:'We start from the business itself and move step by step until there is a system that works.',
+    wnKicker:'Why this concept', wnTitle:'Not just another template',
+    wnSub:'The design starts from the product itself and moves step by step until it becomes a working sales system.',
     wn1:'Business identity', wn2:'Audience', wn3:'Sales model', wn4:'Products',
     wn5:'The problem', wn7:'Visual system', wn8:'Website', wn9:'Growth system',
 
@@ -81,25 +81,25 @@ const I18N = (() => {
 
     fnKicker:'Next step', fnTitle:'Make your showroom sell even when you are not there.',
     fnSub:'This demo explains the idea. The real website — your products, photos, prices and sales process — starts here.',
-    fnCta1:'Start your project', fnCta2:'Talk to NEXORA',
+    fnCta1:'Start your project', fnCta2:'Contact us',
     fnNote:'The WhatsApp number above is a demo number.',
 
-    ftTag:'Your furniture deserves a digital space to match. — Tanta, Egypt',
+    ftTag:'Your furniture deserves a digital space to match.',
     ftContact:'Contact',
-    ftDemo:'An interactive demo by NEXORA. Products, prices and contact data are all placeholders until EMKAN supplies them.',
+    ftDemo:'An interactive concept demo for presentation purposes only. Products, prices and contact data are placeholders.',
 
     cartT:'Cart', cartSub:'Subtotal', cartReq:'Request order — Demo',
     cartNote:'Checkout is intentionally off — this is an interactive demo. In the real build this step becomes an order or an inquiry.',
     cartWa:'Order via WhatsApp (Demo)',
 
-    demoBtn:'Demo mode', demoLabel:'Demo mode · NEXORA', demoPrev:'Previous', demoNext:'Next',
+    demoBtn:'Demo mode', demoLabel:'Demo mode', demoPrev:'Previous', demoNext:'Next',
     demoPrice:'Demo price',
     pdpAdd:'Add to cart — Demo', pdpDetails:'Request details', pdpWa:'WhatsApp',
     pdpDims:'Dimensions', pdpMat:'Materials', pdpDel:'Delivery', pdpColor:'Color',
     pdpNote:'Demo product — images, price and availability are all placeholders.',
 
     ctTitle:'Start your project',
-    ctSub:'Leave your details and NEXORA will reply with scope, cost and next steps. <b>This form is a demo — nothing is sent.</b>',
+    ctSub:'Leave your details and we will get back to you about this demo. <b>This form is a demo — nothing is sent.</b>',
     ctName:'Name', ctPhone:'Phone / WhatsApp', ctNeed:'What do you need?',
     ctSend:'Send request', ctErr:'Please enter a name and a valid phone number.',
 
@@ -129,8 +129,8 @@ const I18N = (() => {
     document.documentElement.lang = lang;
     document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
     document.title = lang === 'en'
-      ? 'EMKAN Digital Showroom — Interactive Demo by NEXORA'
-      : 'EMKAN Digital Showroom — معرض إمكان الرقمي | عرض NEXORA';
+      ? 'BAYT Furniture — Interactive Furniture Showroom Demo'
+      : 'BAYT Furniture — نموذج معرض أثاث تفاعلي | Concept Demo';
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.dataset.i18n;
@@ -150,14 +150,14 @@ const I18N = (() => {
   function setLang(next){
     if (next === lang) return;
     lang = next;
-    try { localStorage.setItem('emkan-lang', lang); } catch(e){}
+    try { localStorage.setItem('bayt-lang', lang); } catch(e){}
     applyStatic();
     document.dispatchEvent(new CustomEvent('langchange'));
   }
 
   function init(){
     let saved = null;
-    try { saved = localStorage.getItem('emkan-lang'); } catch(e){}
+    try { saved = localStorage.getItem('bayt-lang'); } catch(e){}
     lang = (saved === 'en' || saved === 'ar') ? saved : 'ar';
     applyStatic();
   }
