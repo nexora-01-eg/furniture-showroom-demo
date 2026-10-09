@@ -150,6 +150,28 @@ document.addEventListener('click', e => {
 /* ---------------- hero ---------------- */
 $('#heroImg').innerHTML = VIS.heroScene();
 (() => {
+  const vid = $('#heroVideo'), playBtn = $('#heroPlay');
+  if (vid && playBtn){
+    const setPlaying = on => {
+      playBtn.setAttribute('aria-pressed', on);
+      playBtn.setAttribute('aria-label', on ? T('إيقاف الفيديو', 'Pause video') : T('تشغيل الفيديو', 'Play video'));
+    };
+    playBtn.addEventListener('click', () => {
+      if (vid.paused){ vid.play().catch(()=>{}); setPlaying(true); }
+      else { vid.pause(); setPlaying(false); }
+    });
+    vid.addEventListener('error', () => { vid.remove(); playBtn.remove(); }, { once:true });
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(es => es.forEach(e => {
+        if (!playBtn.isConnected) return;
+        if (e.isIntersecting){ if (playBtn.getAttribute('aria-pressed') === 'true') vid.play().catch(()=>{}); }
+        else vid.pause();
+      }), { threshold:.15 }).observe(vid);
+    }
+    document.addEventListener('langchange', () => setPlaying(playBtn.getAttribute('aria-pressed') === 'true'));
+  }
+})();
+(() => {
   if (matchMedia('(hover:none)').matches) return;
   const v = $('#heroVisual');
   $('#hero').addEventListener('pointermove', e => {
