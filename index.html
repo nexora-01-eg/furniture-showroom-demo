@@ -77,6 +77,8 @@
 <!-- ================= 01 · HERO ================= -->
 <section class="hero" id="hero" data-demo="hero">
   <div class="hero-bg" aria-hidden="true"></div>
+  <video class="hero-bg-video" id="heroBgVideo" src="media/hero.mp4" poster="media/hero-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1"></video>
+  <div class="hero-bg-shade" aria-hidden="true"></div>
   <div class="wrap hero-in">
     <div class="hero-copy">
       <span class="kicker" data-i18n="heroKicker">نموذج عرض تفاعلي — معرض أثاث</span>
@@ -99,15 +101,17 @@
     <div class="hero-visual" id="heroVisual">
       <div class="hero-frame">
         <div class="hero-img" id="heroImg"></div>
-        <img class="hero-photo" id="heroPhoto" src="img/pack/01_showroom_golden_hour.jpg" alt="" onerror="this.remove()">
-        <video class="hero-video" id="heroVideo" src="media/hero.mp4" poster="media/hero-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Studio cinematic"></video>
+        <img class="hero-feat on" src="img/products/01_modern_beige_sofa.jpg" alt="Modern beige sofa" data-feat="0">
+        <img class="hero-feat" src="img/products/03_sage_lounge_chair.jpg" alt="Sage lounge chair" data-feat="1" loading="lazy">
+        <img class="hero-feat" src="img/products/05_channel_headboard_bed.jpg" alt="Channel headboard bed" data-feat="2" loading="lazy">
         <div class="hero-vignette" aria-hidden="true"></div>
         <div class="hero-sheen" aria-hidden="true"></div>
-        <div class="hero-reel" aria-hidden="true"><span class="rec"></span><span>CINEMATIC</span></div>
-        <button class="hero-play" id="heroPlay" aria-label="Pause video" aria-pressed="true">
-          <svg class="ic-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-          <svg class="ic-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.87l11-6.5a1 1 0 0 0 0-1.74l-11-6.5A1 1 0 0 0 8 5.5Z"/></svg>
-        </button>
+        <div class="hero-reel" aria-hidden="true"><span class="rec"></span><span>FEATURED</span></div>
+        <div class="hero-dots" id="heroDots" role="tablist" aria-label="Featured photos">
+          <button class="on" data-d="0" aria-label="Photo 1"></button>
+          <button data-d="1" aria-label="Photo 2"></button>
+          <button data-d="2" aria-label="Photo 3"></button>
+        </div>
       </div>
       <div class="chip chip-1" aria-hidden="true"><b data-i18n="chip1t">كنبة هافن ثلاثية</b><span data-i18n="chip1s">سعر تجريبي · EGP 12,900</span></div>
       <div class="chip chip-2" aria-hidden="true"><b data-i18n="chip2t">المعرض</b><span data-i18n="chip2s">المعرض — زيارات بالموعد</span></div>

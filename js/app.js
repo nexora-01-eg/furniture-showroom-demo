@@ -150,26 +150,31 @@ document.addEventListener('click', e => {
 /* ---------------- hero ---------------- */
 $('#heroImg').innerHTML = VIS.heroScene();
 (() => {
-  const vid = $('#heroVideo'), playBtn = $('#heroPlay');
-  if (vid && playBtn){
-    const setPlaying = on => {
-      playBtn.setAttribute('aria-pressed', on);
-      playBtn.setAttribute('aria-label', on ? T('إيقاف الفيديو', 'Pause video') : T('تشغيل الفيديو', 'Play video'));
-    };
-    playBtn.addEventListener('click', () => {
-      if (vid.paused){ vid.play().catch(()=>{}); setPlaying(true); }
-      else { vid.pause(); setPlaying(false); }
-    });
-    vid.addEventListener('error', () => { vid.remove(); playBtn.remove(); }, { once:true });
+  const bg = $('#heroBgVideo');
+  if (bg){
+    bg.addEventListener('error', () => bg.remove(), { once:true });
     if ('IntersectionObserver' in window){
       new IntersectionObserver(es => es.forEach(e => {
-        if (!playBtn.isConnected) return;
-        if (e.isIntersecting){ if (playBtn.getAttribute('aria-pressed') === 'true') vid.play().catch(()=>{}); }
-        else vid.pause();
-      }), { threshold:.15 }).observe(vid);
+        if (!bg.isConnected) return;
+        if (e.isIntersecting) bg.play().catch(()=>{}); else bg.pause();
+      }), { threshold:.05 }).observe(bg);
     }
-    document.addEventListener('langchange', () => setPlaying(playBtn.getAttribute('aria-pressed') === 'true'));
   }
+  const imgs = $$('.hero-feat'), dots = $$('#heroDots button');
+  if (!imgs.length) return;
+  let cur = 0, timer = null;
+  const show = i => {
+    cur = (i + imgs.length) % imgs.length;
+    imgs.forEach((im, k) => im.classList.toggle('on', k === cur));
+    dots.forEach((d, k) => d.classList.toggle('on', k === cur));
+  };
+  const auto = () => {
+    clearInterval(timer);
+    if (!matchMedia('(prefers-reduced-motion:reduce)').matches)
+      timer = setInterval(() => show(cur + 1), 5000);
+  };
+  dots.forEach(d => d.addEventListener('click', () => { show(+d.dataset.d); auto(); }));
+  auto();
 })();
 (() => {
   if (matchMedia('(hover:none)').matches) return;
